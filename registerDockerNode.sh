@@ -11,3 +11,4 @@ docker run -d --restart unless-stopped -p 4567-4583:4567-4583 -p 8080:8080 local
  
 # access at mine:9000
 docker run -d --restart unless-stopped -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer --no-auth
+
