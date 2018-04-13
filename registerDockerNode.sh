@@ -4,7 +4,7 @@
 # /Volumes, /private, /tmp, and /Users
  
 # also, set in your /etc/hosts file:
-#    192.168.99.100  mine.regence.com
+#    192.168.99.100  mine
  
 # access at mine:8080
 docker run -d --restart unless-stopped -p 4567-4583:4567-4583 -p 8080:8080 localstack/localstack
