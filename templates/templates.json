@@ -1,0 +1,181 @@
+[
+  {
+    "type": "container",
+    "title": "Nginx",
+    "description": "High performance web server",
+    "categories": ["webserver"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/nginx.png",
+    "image": "nginx:latest",
+    "ports": [
+      "80/tcp",
+      "443/tcp"
+    ],
+    "volumes": ["/etc/nginx", "/usr/share/nginx/html"]
+  },
+  {
+    "type": "container",
+    "title": "Httpd",
+    "description": "Open-source HTTP server",
+    "categories": ["webserver"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/httpd.png",
+    "image": "httpd:latest",
+    "ports": [
+      "80/tcp"
+    ],
+    "volumes": ["/usr/local/apache2/htdocs/"]
+  },
+  {
+    "type": "container",
+    "title": "MySQL",
+    "description": "The most popular open-source database",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/mysql.png",
+    "image": "mysql:latest",
+    "env": [
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "label": "Root password"
+      }
+    ],
+    "ports": [
+      "3306/tcp"
+    ],
+    "volumes": ["/var/lib/mysql"]
+  },
+  {
+    "type": "container",
+    "title": "PostgreSQL",
+    "description": "The most advanced open-source database",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/postgres.png",
+    "image": "postgres:latest",
+    "env": [
+      {
+        "name": "POSTGRES_USER",
+        "label": "Superuser"
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "label": "Superuser password"
+      }
+    ],
+    "ports": [
+      "5432/tcp"
+    ],
+    "volumes": ["/var/lib/postgresql/data"]
+  },
+  {
+    "type": "container",
+    "title": "Mongo",
+    "description": "Open-source document-oriented database",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/mongo.png",
+    "image": "mongo:latest",
+    "ports": [
+      "27017/tcp"
+    ],
+    "volumes": ["/data/db"]
+  },
+  {
+    "type": "container",
+    "title": "Elasticsearch",
+    "description": "Open-source search and analytics engine",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/elasticsearch.png",
+    "image": "elasticsearch:latest",
+    "ports": [
+      "9200/tcp",
+      "9300/tcp"
+    ],
+    "volumes": ["/usr/share/elasticsearch/data"]
+  },
+  {
+    "type": "container",
+    "title": "Scality S3",
+    "description": "Standalone AWS S3 protocol server",
+    "categories": ["storage"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/scality-s3.png",
+    "image": "scality/s3server",
+    "ports": [
+      "8000/tcp"
+    ],
+    "env": [
+      {
+        "name": "SCALITY_ACCESS_KEY",
+        "label": "Scality S3 access key"
+      },
+      {
+        "name": "SCALITY_SECRET_KEY",
+        "label": "Scality S3 secret key"
+      }
+    ],
+    "volumes": ["/usr/src/app/localData", "/usr/src/app/localMetadata"]
+  },
+  {
+    "type": "container",
+    "title": "Solr",
+    "description": "Open-source enterprise search platform",
+    "categories": ["search-engine"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/solr.png",
+    "image": "solr:latest",
+    "ports": [
+      "8983/tcp"
+    ],
+    "volumes": ["/opt/solr/mydata"]
+  },
+  {
+    "type": "container",
+    "title": "Redis",
+    "description": "Open-source in-memory data structure store",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/redis.png",
+    "image": "redis:latest",
+    "ports": [
+      "6379/tcp"
+    ],
+    "volumes": ["/data"]
+  },
+  {
+    "type": "container",
+    "title": "RabbitMQ",
+    "description": "Highly reliable enterprise messaging system",
+    "categories": ["messaging"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/rabbitmq.png",
+    "image": "rabbitmq:latest",
+    "ports": [
+      "5671/tcp",
+      "5672/tcp"
+    ],
+    "volumes": ["/var/lib/rabbitmq"]
+  },
+  {
+    "type": "container",
+    "title": "Jenkins",
+    "description": "Open-source continuous integration tool",
+    "categories": ["continuous-integration"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/jenkins.png",
+    "image": "jenkins/jenkins:lts",
+    "ports": [
+      "8080/tcp",
+      "50000/tcp"
+    ],
+    "env": [
+      {
+        "name": "JENKINS_OPTS",
+        "label": "Jenkins options"
+      }
+    ],
+    "volumes": ["/var/jenkins_home"]
+  }
+]

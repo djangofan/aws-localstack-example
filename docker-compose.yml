@@ -1,0 +1,37 @@
+version: '2'
+# when editing this file, you can immediately deploy changes with 'docker-compose up -d --force-recreate'
+services:
+
+  portainer:
+    image: portainer/portainer
+    container_name: "portainer-app"
+    ports:
+      - "9000:9000"
+    command: --no-auth
+    networks:
+      - local
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/tmp:/data
+
+  localstack:
+    image: localstack/localstack
+    container_name: "localstack"
+    ports:
+      - "4567-4583:4567-4583"
+      - "8080:8080"
+    environment:
+      - SERVICES=sqs:4570,s3:4572,sns:4575
+      - DEBUG=s3
+      - DATA_DIR=/data
+      - PORT_WEB_UI=8080
+      - LAMBDA_EXECUTOR=local
+      - KINESIS_ERROR_PROBABILITY=0.0
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/tmp/localstack:/tmp/localstack
+
+networks:
+  local:
+    driver: bridge
