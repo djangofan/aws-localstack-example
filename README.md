@@ -17,3 +17,5 @@ $ docker-compose up -d
 ```
 
 And then access Portainer by hitting [http://localhost:9000/portainer](http://localhost/portainer) with a web browser (or http://192.168.99.100:9000/ ).
+
+![portainer admin](https://github.com/djangofan/aws-localstack-example/raw/master/portainer.png "Portainer Admin")

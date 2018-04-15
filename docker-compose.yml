@@ -27,19 +27,22 @@ services:
       - "9000:9000"
     command: --no-auth
     networks:
-      - local
+      - localstack
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/tmp:/data
+    restart: unless-stopped
 
   localstack:
     image: localstack/localstack
     container_name: "localstack"
     ports:
+      - "8080:8080"
       - "4570:4570"
       - "4572:4572"
       - "4575:4575"
-      - "8080:8080"
+    networks:
+      - localstack
     environment:
       - SERVICES=sqs:4570,s3:4572,sns:4575
       - DEBUG=s3
@@ -51,7 +54,40 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/tmp/localstack:/tmp/localstack
+    restart: unless-stopped
+
+  postgres:
+    image: postgres
+    container_name: "postgres-test"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=changeme
+      - PGDATA=/tmp/postgres
+    volumes:
+      - /var/tmp/postgres:/tmp/postgres
+      #- /data/postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - localstack
+    restart: unless-stopped
+  
+  # default username and password: pgadmin4@pgadmin.org / admin
+  pgadmin:
+    links:
+      - postgres:postgres-test
+    image: fenglc/pgadmin4
+    container_name: "pgadmin"
+    volumes:
+      - /var/tmp/.pgadmin:/tmp/.pgadmin
+      #- /data/pgadmin:/root/.pgadmin
+    ports:
+      - "5050:5050"
+    networks:
+      - localstack
+    restart: unless-stopped
 
 networks:
-  local:
+  localstack:
     driver: bridge
