@@ -15,4 +15,4 @@ $ docker-compose up -d
 
 And then access Portainer by hitting [http://localhost/portainer](http://localhost/portainer) with a web browser.
 
-![localstack admin](https://github.com/djangofan/aws-localstack-example/raw/master/admin.png "Localstack Admin")
+![localstack admin](https://github.com/djangofan/aws-localstack-example/raw/master/admin_localstack.png "Localstack Admin")
