@@ -1,6 +1,6 @@
 # aws-localstack-example
 
-A simple setup to deploy Portainer with custom templates.
+A simple setup to deploy LocalStack + Portainer with custom templates.
 
 [http://localhost:8080/](http://localhost:8080/) or [http://192.168.99.100:8080/](http://192.168.99.100:8080/)
 
