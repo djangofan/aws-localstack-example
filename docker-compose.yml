@@ -4,7 +4,7 @@ services:
 
   portainer:
     image: portainer/portainer
-    container_name: "portainer-app"
+    container_name: "portainer"
     ports:
       - "9000:9000"
     command: --no-auth
