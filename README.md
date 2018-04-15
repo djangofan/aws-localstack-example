@@ -2,6 +2,8 @@
 
 A simple setup to deploy Portainer with custom templates.
 
+[http://localhost:8080/](http://localhost:8080/) 
+
 ![localstack admin](https://github.com/djangofan/aws-localstack-example/raw/master/admin_localstack.png "Localstack Admin")
 
 # Usage
