@@ -28,6 +28,7 @@ services:
     command: --no-auth
     networks:
       - localstack
+    hostname: localstack
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/tmp:/data
@@ -43,6 +44,7 @@ services:
       - "4575:4575"
     networks:
       - localstack
+    hostname: localstack
     environment:
       - SERVICES=sqs:4570,s3:4572,sns:4575
       - DEBUG=s3
@@ -72,6 +74,7 @@ services:
       - "5432:5432"
     networks:
       - localstack
+    hostname: localstack
     restart: unless-stopped
   
   # default username and password: pgadmin4@pgadmin.org / admin
@@ -80,6 +83,8 @@ services:
       - postgres:postgres-test
     image: fenglc/pgadmin4
     container_name: "pgadmin"
+    depends_on:
+      - postgres-test
     volumes:
       - /var/tmp/.pgadmin:/tmp/.pgadmin
       #- /data/pgadmin:/root/.pgadmin
@@ -87,6 +92,7 @@ services:
       - "5050:5050"
     networks:
       - localstack
+    hostname: localstack
     restart: unless-stopped
 
 networks:
