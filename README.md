@@ -14,4 +14,4 @@ Run it:
 $ docker-compose up -d
 ```
 
-And then access Portainer by hitting [http://localhost/portainer](http://localhost/portainer) with a web browser.
+And then access Portainer by hitting [http://localhost:9000/portainer](http://localhost/portainer) with a web browser (or http://192.168.99.100:9000/ ).
