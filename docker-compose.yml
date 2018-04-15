@@ -67,6 +67,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=changeme
       - PGDATA=/tmp/postgres
+      # for example, connect at: 172.20.0.4:5432 with the above credentials
     volumes:
       - /var/tmp/postgres:/tmp/postgres
       #- /data/postgres:/data/postgres
