@@ -26,9 +26,6 @@ services:
     ports:
       - "9000:9000"
     command: --no-auth
-    networks:
-      - localstack
-    hostname: localstack
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/tmp:/data
@@ -42,9 +39,6 @@ services:
       - "4570:4570"
       - "4572:4572"
       - "4575:4575"
-    networks:
-      - localstack
-    hostname: localstack
     environment:
       - SERVICES=sqs:4570,s3:4572,sns:4575
       - DEBUG=s3
@@ -73,9 +67,6 @@ services:
       #- /data/postgres:/data/postgres
     ports:
       - "5432:5432"
-    networks:
-      - localstack
-    hostname: localstack
     restart: unless-stopped
   
   # default username and password: pgadmin4@pgadmin.org / admin
@@ -85,17 +76,19 @@ services:
     image: fenglc/pgadmin4
     container_name: "pgadmin"
     depends_on:
-      - postgres-test
+      - postgres
     volumes:
       - /var/tmp/.pgadmin:/tmp/.pgadmin
       #- /data/pgadmin:/root/.pgadmin
     ports:
       - "5050:5050"
-    networks:
-      - localstack
-    hostname: localstack
     restart: unless-stopped
 
-networks:
-  localstack:
-    driver: bridge
+  sftp:
+    image: atmoz/sftp
+    container_name: "sftp"
+    volumes:
+        - /var/tmp/upload:/home/foo/upload
+    ports:
+        - "2222:22"
+    command: foo:pass:1001
