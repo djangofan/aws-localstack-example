@@ -10,7 +10,7 @@ A simple setup to deploy LocalStack + Portainer with custom templates.
 
 The default configuration will connect Portainer against the local Docker host, using an nginx container (port 80).
 
-Run it:
+Simply run this command from project root directory:
 
 ```
 $ docker-compose up -d
